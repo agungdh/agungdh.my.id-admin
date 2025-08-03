@@ -23,7 +23,7 @@ export class Project {
 
     private reload$ = new Subject<void>();
     public projects$ = this.reload$.pipe(
-        startWith(void 0),               // langsung fetch sekali saat inisialisasi
+        startWith(void 0), // langsung fetch sekali saat inisialisasi
         switchMap(() => this.projectService.getProjects())
     );
 
@@ -44,12 +44,12 @@ export class Project {
             accept: () => {
                 this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Deleting record', life: 3000 });
 
-                this.projectService.deleteProject(id).subscribe(res => {
-                    console.log({res})
+                this.projectService.deleteProject(id).subscribe((res) => {
+                    console.log({ res });
 
-                    this.reload$.next()
-                })
-            },
+                    this.reload$.next();
+                });
+            }
         });
     }
 }

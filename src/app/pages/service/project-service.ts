@@ -43,8 +43,6 @@ export class ProjectService {
                 `,
                 variables: { id }
             })
-            .pipe(
-                map((result) => result.data?.deleteProject ?? false)
-            );
+            .pipe(map((result) => result.data?.deleteProject ?? false));
     }
 }
