@@ -15,7 +15,7 @@
                 <td>{{ project.name }}</td>
                 <td>{{ project.description }}</td>
                 <td>{{ project.releaseDate }}</td>
-                <td><p-button (onClick)="deleteData($event)" label="Delete" severity="danger" [outlined]="true" /></td>
+                <td><p-button (onClick)="deleteData($event, project.id)" label="Delete" severity="danger" [outlined]="true" /></td>
             </tr>
         </ng-template>
     </p-table>

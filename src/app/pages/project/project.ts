@@ -23,7 +23,7 @@ export class Project {
 
     public projects$: Observable<ProjectType[]> = this.projectService.getProjects();
 
-    public deleteData(event: Event) {
+    public deleteData(event: Event, id: string) {
         this.confirmationService.confirm({
             target: event.currentTarget as EventTarget,
             message: 'Do you want to delete this record?',
@@ -40,7 +40,9 @@ export class Project {
             accept: () => {
                 this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Deleting record', life: 3000 });
 
-                // this.projectService.del
+                this.projectService.deleteProject(id).subscribe(res => {
+                    console.log({res})
+                })
             },
         });
     }

@@ -32,4 +32,19 @@ export class ProjectService {
             })
             .valueChanges.pipe(map((result) => result.data.projects));
     }
+
+    public deleteProject(id: string): Observable<boolean> {
+        return this.apollo
+            .mutate<{ deleteProject: boolean }>({
+                mutation: gql`
+                    mutation DeleteProject($id: ID!) {
+                        deleteProject(id: $id)
+                    }
+                `,
+                variables: { id }
+            })
+            .pipe(
+                map((result) => result.data?.deleteProject ?? false)
+            );
+    }
 }
