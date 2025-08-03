@@ -22,7 +22,8 @@
             "@/*": [
                 "src/app/*"
             ]
-        }
+        },
+        "lib": ["es2020", "dom", "esnext.asynciterable"]
     },
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false,
