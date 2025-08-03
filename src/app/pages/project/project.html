@@ -1,4 +1,27 @@
 <div class="card">
     <div class="font-semibold text-xl mb-4">Empty Page</div>
-    <p>Use this page to start from scratch and place your custom content.</p>
+    <ng-container *ngIf="projects$ | async as projects; else loading">
+        <p-table [value]="projects | async" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template #header>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Release Date</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-project>
+                <tr>
+                    <td>{{ project.id }}</td>
+                    <td>{{ project.name }}</td>
+                    <td>{{ project.description }}</td>
+                    <td>{{ project.releaseDate }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </ng-container>
+
+    <ng-template #loading>
+        <div class="text-center py-8">Loading…</div>
+    </ng-template>
 </div>
