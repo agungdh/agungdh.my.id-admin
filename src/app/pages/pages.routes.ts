@@ -1,11 +1,8 @@
 import { Routes } from '@angular/router';
-import { Documentation } from './documentation/documentation';
-import { Crud } from './crud/crud';
 import { Empty } from './empty/empty';
+import { Dashboard } from '@/pages/dashboard/dashboard';
 
 export default [
-    { path: 'documentation', component: Documentation },
-    { path: 'crud', component: Crud },
-    { path: 'empty', component: Empty },
-    { path: '**', redirectTo: '/notfound' }
+    { path: '', component: Dashboard },
+    { path: 'empty', component: Empty }
 ] as Routes;
