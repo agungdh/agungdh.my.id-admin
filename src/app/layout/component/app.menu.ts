@@ -22,16 +22,12 @@ export class AppMenu {
         this.model = [
             {
                 label: 'Home',
-                items: [
-                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
-                ]
+                items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }]
             },
             {
                 label: 'Data',
-                items: [
-                    { label: 'Project', icon: 'pi pi-fw pi-home', routerLink: ['/project'] },
-                ]
-            },
+                items: [{ label: 'Project', icon: 'pi pi-fw pi-home', routerLink: ['/project'] }]
+            }
         ];
     }
 }

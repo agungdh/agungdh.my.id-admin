@@ -8,10 +8,9 @@ import { Observable } from 'rxjs';
     selector: 'app-empty',
     standalone: true,
     imports: [TableModule, CommonModule],
-    templateUrl: './project.html',
+    templateUrl: './project.html'
 })
 export class Project {
     private readonly projectService = inject(ProjectService);
-    public projects$: Observable<ProjectType[]> =
-        this.projectService.getProjects();
+    public projects$: Observable<ProjectType[]> = this.projectService.getProjects();
 }

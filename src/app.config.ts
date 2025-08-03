@@ -22,9 +22,9 @@ export const appConfig: ApplicationConfig = {
                 cache: new InMemoryCache(),
                 defaultOptions: {
                     watchQuery: { fetchPolicy: 'network-only' },
-                    query: { fetchPolicy: 'network-only' },
-                },
+                    query: { fetchPolicy: 'network-only' }
+                }
             };
-        }),
+        })
     ]
 };
