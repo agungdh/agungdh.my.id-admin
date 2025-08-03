@@ -3,6 +3,6 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app-empty',
     standalone: true,
-    templateUrl: './dashboard.html',
+    templateUrl: './project.html',
 })
-export class Dashboard {}
+export class Project {}
