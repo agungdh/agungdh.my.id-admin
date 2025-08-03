@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { ProjectService, ProjectType } from '@/pages/service/project-service';
-import { Observable } from 'rxjs';
+import { Observable, startWith, Subject, switchMap } from 'rxjs';
 import { Button } from 'primeng/button';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -21,7 +21,11 @@ export class Project {
     private readonly confirmationService = inject(ConfirmationService);
     private readonly messageService = inject(MessageService);
 
-    public projects$: Observable<ProjectType[]> = this.projectService.getProjects();
+    private reload$ = new Subject<void>();
+    public projects$ = this.reload$.pipe(
+        startWith(void 0),               // langsung fetch sekali saat inisialisasi
+        switchMap(() => this.projectService.getProjects())
+    );
 
     public deleteData(event: Event, id: string) {
         this.confirmationService.confirm({
@@ -42,6 +46,8 @@ export class Project {
 
                 this.projectService.deleteProject(id).subscribe(res => {
                     console.log({res})
+
+                    this.reload$.next()
                 })
             },
         });
