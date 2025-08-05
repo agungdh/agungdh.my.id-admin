@@ -33,6 +33,22 @@ export class ProjectService {
         .valueChanges.pipe(map((result) => result.data.projects));
     }
 
+    public upsertProject(name: string, description: string): Observable<boolean> {
+        return this.apollo
+        .mutate<{ upsertProject: { id: string } }>({
+            mutation: gql`
+                mutation MyMutation($input: UpsertProjectInput!) {
+                    upsertProject(input: $input) {
+                        id
+                    }
+                }
+            `,
+            variables: { input: { name, description } } // Use dynamic input
+        })
+        .pipe(map((result) => !!result.data?.upsertProject?.id));
+    }
+
+
     public deleteProject(id: string): Observable<boolean> {
         return this.apollo
         .mutate<{ deleteProject: boolean }>({
