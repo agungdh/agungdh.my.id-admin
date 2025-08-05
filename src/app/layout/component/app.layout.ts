@@ -11,17 +11,19 @@ import { LayoutService } from '../service/layout.service';
     selector: 'app-layout',
     standalone: true,
     imports: [CommonModule, AppTopbar, AppSidebar, RouterModule, AppFooter],
-    template: `<div class="layout-wrapper" [ngClass]="containerClass">
-        <app-topbar></app-topbar>
-        <app-sidebar></app-sidebar>
-        <div class="layout-main-container">
-            <div class="layout-main">
-                <router-outlet></router-outlet>
+    template: `
+        <div class="layout-wrapper" [ngClass]="containerClass">
+            <app-topbar></app-topbar>
+            <app-sidebar></app-sidebar>
+            <div class="layout-main-container">
+                <div class="layout-main">
+                    <router-outlet></router-outlet>
+                </div>
+                <app-footer></app-footer>
             </div>
-            <app-footer></app-footer>
+            <div class="layout-mask animate-fadein"></div>
         </div>
-        <div class="layout-mask animate-fadein"></div>
-    </div> `
+    `
 })
 export class AppLayout {
     overlayMenuOpenSubscription: Subscription;

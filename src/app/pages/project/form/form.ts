@@ -15,13 +15,12 @@ import { ProjectService } from '@/pages/project/project.service';
     styleUrl: './form.scss'
 })
 export class Form {
-    private readonly router = inject(Router);  // Inject Router service here
-    private readonly projectService = inject(ProjectService);
-
     form = new FormGroup({
         name: new FormControl(''),
         description: new FormControl('')
     });
+    private readonly router = inject(Router); // Inject Router service here
+    private readonly projectService = inject(ProjectService);
 
     onSubmit() {
         const name = this.form.value.name ?? '';
@@ -36,7 +35,11 @@ export class Form {
                 }
             },
             error: (err) => {
-                console.error({ severity: 'error', summary: 'Error', detail: 'An error occurred while saving the project.' });
+                console.error({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: 'An error occurred while saving the project.'
+                });
             }
         });
     }

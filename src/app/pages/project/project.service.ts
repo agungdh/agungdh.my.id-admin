@@ -18,47 +18,46 @@ export class ProjectService {
 
     public getProjects(): Observable<ProjectType[]> {
         return this.apollo
-        .watchQuery<{ projects: ProjectType[] }>({
-            query: gql`
-                query {
-                    projects {
-                        id
-                        name
-                        description
-                        releaseDate
+            .watchQuery<{ projects: ProjectType[] }>({
+                query: gql`
+                    query {
+                        projects {
+                            id
+                            name
+                            description
+                            releaseDate
+                        }
                     }
-                }
-            `
-        })
-        .valueChanges.pipe(map((result) => result.data.projects));
+                `
+            })
+            .valueChanges.pipe(map((result) => result.data.projects));
     }
 
     public upsertProject(name: string, description: string): Observable<boolean> {
         return this.apollo
-        .mutate<{ upsertProject: { id: string } }>({
-            mutation: gql`
-                mutation MyMutation($input: UpsertProjectInput!) {
-                    upsertProject(input: $input) {
-                        id
+            .mutate<{ upsertProject: { id: string } }>({
+                mutation: gql`
+                    mutation MyMutation($input: UpsertProjectInput!) {
+                        upsertProject(input: $input) {
+                            id
+                        }
                     }
-                }
-            `,
-            variables: { input: { name, description } } // Use dynamic input
-        })
-        .pipe(map((result) => !!result.data?.upsertProject?.id));
+                `,
+                variables: { input: { name, description } } // Use dynamic input
+            })
+            .pipe(map((result) => !!result.data?.upsertProject?.id));
     }
-
 
     public deleteProject(id: string): Observable<boolean> {
         return this.apollo
-        .mutate<{ deleteProject: boolean }>({
-            mutation: gql`
-                mutation DeleteProject($id: ID!) {
-                    deleteProject(id: $id)
-                }
-            `,
-            variables: { id }
-        })
-        .pipe(map((result) => result.data?.deleteProject ?? false));
+            .mutate<{ deleteProject: boolean }>({
+                mutation: gql`
+                    mutation DeleteProject($id: ID!) {
+                        deleteProject(id: $id)
+                    }
+                `,
+                variables: { id }
+            })
+            .pipe(map((result) => result.data?.deleteProject ?? false));
     }
 }
