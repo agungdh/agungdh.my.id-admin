@@ -2,7 +2,6 @@
     <div class="font-semibold text-xl mb-4">Create Project</div>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-
         <div class="flex flex-col gap-2">
             <label for="name">Name</label>
             <input pInputText id="name" type="text" formControlName="name" />
@@ -10,7 +9,7 @@
 
         <div class="flex flex-col gap-2">
             <label for="description">Description</label>
-            <textarea rows="5" cols="30" pTextarea id="description" formControlName="description" ></textarea>
+            <textarea rows="5" cols="30" pTextarea id="description" formControlName="description"></textarea>
         </div>
 
         <div class="flex gap-4 mt-4">
@@ -19,6 +18,5 @@
             </a>
             <p-button type="submit" label="Simpan" icon="pi pi-check"></p-button>
         </div>
-
     </form>
 </div>

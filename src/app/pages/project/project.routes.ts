@@ -5,5 +5,5 @@ import { Form } from '@/pages/project/form/form';
 
 export default [
     { path: '', component: Project },
-    { path: 'create', component: Form },
+    { path: 'create', component: Form }
 ] as Routes;
