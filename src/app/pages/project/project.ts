@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
-import { ProjectService } from '@/pages/service/project-service';
 import { startWith, Subject, switchMap } from 'rxjs';
 import { Button, ButtonModule } from 'primeng/button';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { RouterLink } from '@angular/router';
+import { ProjectService } from '@/pages/project/project.service';
 
 @Component({
     selector: 'app-empty',
