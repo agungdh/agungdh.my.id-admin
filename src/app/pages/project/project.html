@@ -1,5 +1,6 @@
 <div class="card">
     <div class="font-semibold text-xl mb-4">Project</div>
+    <a routerLink="/project/create"><p-button label="Tambah" icon="pi pi-user" /></a>
     @if (projects$ | async; as projects) {
     <p-table [value]="projects" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template #header>

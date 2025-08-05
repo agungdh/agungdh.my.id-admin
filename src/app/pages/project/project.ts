@@ -8,11 +8,12 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-empty',
     standalone: true,
-    imports: [TableModule, CommonModule, Button, ButtonModule, ToastModule, ConfirmPopupModule],
+    imports: [TableModule, CommonModule, Button, ButtonModule, ToastModule, ConfirmPopupModule, RouterLink],
     providers: [ConfirmationService, MessageService],
     templateUrl: './project.html'
 })

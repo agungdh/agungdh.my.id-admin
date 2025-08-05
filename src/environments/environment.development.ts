@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    baseUrl: 'http://localhost:8080',
-    graphqlUri: 'http://localhost:8080/graphql'
+    baseUrl: 'https://api.agungdh.my.id',
+    graphqlUri: 'https://api.agungdh.my.id/graphql'
 };

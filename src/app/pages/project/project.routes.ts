@@ -3,6 +3,5 @@ import { Dashboard } from '@/pages/dashboard/dashboard';
 import { Project } from '@/pages/project/project';
 
 export default [
-    { path: '', component: Dashboard },
-    { path: 'project', loadChildren: () => import('@/pages/project/project.routes') }
+    { path: '', component: Project }
 ] as Routes;
