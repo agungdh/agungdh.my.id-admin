@@ -113,13 +113,6 @@ export class AppConfigurator {
         { label: 'Static', value: 'static' },
         { label: 'Overlay', value: 'overlay' }
     ];
-
-    ngOnInit() {
-        if (isPlatformBrowser(this.platformId)) {
-            this.onPresetChange(this.layoutService.layoutConfig().preset);
-        }
-    }
-
     surfaces: SurfacesType[] = [
         {
             name: 'slate',
@@ -258,17 +251,12 @@ export class AppConfigurator {
             }
         }
     ];
-
     selectedPrimaryColor = computed(() => {
         return this.layoutService.layoutConfig().primary;
     });
-
     selectedSurfaceColor = computed(() => this.layoutService.layoutConfig().surface);
-
     selectedPreset = computed(() => this.layoutService.layoutConfig().preset);
-
     menuMode = computed(() => this.layoutService.layoutConfig().menuMode);
-
     primaryColors = computed<SurfacesType[]>(() => {
         const presetPalette = presets[this.layoutService.layoutConfig().preset as KeyOfType<typeof presets>].primitive;
         const colors = ['emerald', 'green', 'lime', 'orange', 'amber', 'yellow', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'];
@@ -283,6 +271,12 @@ export class AppConfigurator {
 
         return palettes;
     });
+
+    ngOnInit() {
+        if (isPlatformBrowser(this.platformId)) {
+            this.onPresetChange(this.layoutService.layoutConfig().preset);
+        }
+    }
 
     getPresetExt() {
         const color: SurfacesType = this.primaryColors().find((c) => c.name === this.selectedPrimaryColor()) || {};

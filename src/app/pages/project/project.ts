@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
-import { ProjectService, ProjectType } from '@/pages/service/project-service';
-import { Observable, startWith, Subject, switchMap } from 'rxjs';
-import { Button } from 'primeng/button';
+import { ProjectService } from '@/pages/service/project-service';
+import { startWith, Subject, switchMap } from 'rxjs';
+import { Button, ButtonModule } from 'primeng/button';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { RouterLink } from '@angular/router';
@@ -43,7 +42,12 @@ export class Project {
                 severity: 'danger'
             },
             accept: () => {
-                this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Deleting record', life: 3000 });
+                this.messageService.add({
+                    severity: 'info',
+                    summary: 'Confirmed',
+                    detail: 'Deleting record',
+                    life: 3000
+                });
 
                 this.projectService.deleteProject(id).subscribe((res) => {
                     console.log({ res });

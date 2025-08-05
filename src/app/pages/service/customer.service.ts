@@ -24,6 +24,8 @@ export interface Customer {
 
 @Injectable()
 export class CustomerService {
+    constructor(private http: HttpClient) {}
+
     getData() {
         return [
             {
@@ -9028,8 +9030,6 @@ export class CustomerService {
             }
         ];
     }
-
-    constructor(private http: HttpClient) {}
 
     getCustomersMini() {
         return Promise.resolve(this.getData().slice(0, 5));

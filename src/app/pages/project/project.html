@@ -1,27 +1,32 @@
 <div class="card">
     <div class="font-semibold text-xl mb-4">Project</div>
-    <a routerLink="/project/create"><p-button label="Tambah" icon="pi pi-user" /></a>
+    <a routerLink="/project/create">
+        <p-button icon="pi pi-user" label="Tambah" />
+    </a>
     @if (projects$ | async; as projects) {
-    <p-table [value]="projects" [tableStyle]="{ 'min-width': '50rem' }">
-        <ng-template #header>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Release Date</th>
-                <th>Action</th>
-            </tr>
-        </ng-template>
-        <ng-template #body let-project>
-            <tr>
-                <td>{{ project.name }}</td>
-                <td>{{ project.description }}</td>
-                <td>{{ project.releaseDate }}</td>
-                <td><p-button (onClick)="deleteData($event, project.id)" label="Delete" severity="danger" [outlined]="true" /></td>
-            </tr>
-        </ng-template>
-    </p-table>
+        <p-table [value]="projects" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template #header>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Release Date</th>
+                    <th>Action</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-project>
+                <tr>
+                    <td>{{ project.name }}</td>
+                    <td>{{ project.description }}</td>
+                    <td>{{ project.releaseDate }}</td>
+                    <td>
+                        <p-button (onClick)="deleteData($event, project.id)" label="Delete" severity="danger"
+                                  [outlined]="true" />
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
     } @else {
-    <div class="text-center py-8">Loading…</div>
+        <div class="text-center py-8">Loading…</div>
     }
 </div>
 

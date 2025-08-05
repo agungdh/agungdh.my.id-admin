@@ -1,7 +1,7 @@
 // src/app/services/project-service.ts
 import { inject, Injectable } from '@angular/core';
 import { gql } from '@apollo/client';
-import { Apollo, QueryRef } from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
