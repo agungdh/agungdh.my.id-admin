@@ -33,6 +33,23 @@ export class ProjectService {
             .valueChanges.pipe(map((result) => result.data.projects));
     }
 
+    public getProjectById(id: string): Observable<ProjectType | null> {
+        return this.apollo
+        .watchQuery<{ projectById: ProjectType }>({
+            query: gql`
+                query ($id: String!) {
+                    projectById(id: $id) {
+                        id
+                        name
+                        description
+                    }
+                }
+            `,
+            variables: { id }
+        })
+        .valueChanges.pipe(map((result) => result.data?.projectById ?? null));
+    }
+
     public upsertProject(name: string, description: string): Observable<boolean> {
         return this.apollo
             .mutate<{ upsertProject: { id: string } }>({
