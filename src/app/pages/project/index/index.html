@@ -19,6 +19,9 @@
                     <td>{{ project.description }}</td>
                     <td>{{ project.releaseDate }}</td>
                     <td>
+                        <a [routerLink]="['edit', project.id]">
+                            <p-button label="Edit" severity="warn" [outlined]="true" />
+                        </a>
                         <p-button (onClick)="deleteData($event, project.id)" label="Delete" severity="danger"
                                   [outlined]="true" />
                     </td>

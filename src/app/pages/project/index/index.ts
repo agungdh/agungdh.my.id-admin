@@ -14,9 +14,9 @@ import { ProjectService } from '@/pages/project/project.service';
     standalone: true,
     imports: [TableModule, CommonModule, Button, ButtonModule, ToastModule, ConfirmPopupModule, RouterLink],
     providers: [ConfirmationService, MessageService],
-    templateUrl: './project.html'
+    templateUrl: './index.html'
 })
-export class Project {
+export class Index {
     private readonly projectService = inject(ProjectService);
     private readonly confirmationService = inject(ConfirmationService);
     private readonly messageService = inject(MessageService);

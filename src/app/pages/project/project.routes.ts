@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
-import { Project } from '@/pages/project/project';
 import { Form } from '@/pages/project/form/form';
+import { Index } from '@/pages/project/index';
 
 export default [
-    { path: '', component: Project },
-    { path: 'create', component: Form }
+    { path: '', component: Index },
+    { path: 'create', component: Form },
+    { path: 'edit/:id', component: Form },
 ] as Routes;
