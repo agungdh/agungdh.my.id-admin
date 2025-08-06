@@ -52,10 +52,14 @@ export class Form implements OnInit {
         }
     }
     onSubmit() {
-        const name = this.form.value.name ?? '';
-        const description = this.form.value.description ?? '';
+        const form: ProjectType = {
+            name: this.form.value.name ?? '',
+            description: this.form.value.description ?? '',
+            id: this.projectId,
+            releaseDate: null
+        };
 
-        this.projectService.upsertProject(name, description).subscribe({
+        this.projectService.upsertProject(form).subscribe({
             next: (success) => {
                 if (success) {
                     this.router.navigate(['/project']);
@@ -67,7 +71,8 @@ export class Form implements OnInit {
                 console.error({
                     severity: 'error',
                     summary: 'Error',
-                    detail: 'An error occurred while saving the project.'
+                    detail: 'An error occurred while saving the project.',
+                    err
                 });
             }
         });

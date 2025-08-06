@@ -6,10 +6,10 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 export interface ProjectType {
-    id: string;
+    id: string | null;
     name: string;
     description: string;
-    releaseDate: string;
+    releaseDate: string | null;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -50,7 +50,7 @@ export class ProjectService {
         .valueChanges.pipe(map((result) => result.data?.projectById ?? null));
     }
 
-    public upsertProject(name: string, description: string): Observable<boolean> {
+    public upsertProject(form: ProjectType): Observable<boolean> {
         return this.apollo
             .mutate<{ upsertProject: { id: string } }>({
                 mutation: gql`
@@ -60,7 +60,7 @@ export class ProjectService {
                         }
                     }
                 `,
-                variables: { input: { name, description } } // Use dynamic input
+                variables: { input: form } // Use dynamic input
             })
             .pipe(map((result) => !!result.data?.upsertProject?.id));
     }
